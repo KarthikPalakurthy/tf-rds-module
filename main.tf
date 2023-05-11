@@ -50,7 +50,7 @@ resource "aws_rds_cluster" "default" {
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances" {
-  count              = var.number_of_instances
+  count              = var.no_of_instances
   identifier         = "${var.env}-rds-${count.index+1}"
   cluster_identifier = aws_rds_cluster.default.id
   instance_class     = var.instance_class
