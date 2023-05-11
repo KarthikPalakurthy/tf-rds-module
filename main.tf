@@ -38,7 +38,7 @@ resource "aws_rds_cluster" "default" {
   cluster_identifier      = "${var.env}-rds"
   engine                  = var.engine
   engine_version          = var.engine_version
-  database_subnet_group_name  =  aws_db_subnet_group.default.name
+  db_subnet_group_name    =  aws_db_subnet_group.default.name
   master_username         = data.aws_ssm_parameter.DB_ADMIN_USER.value
   master_password         = data.aws_ssm_parameter.DB_ADMIN_PASS.value
   storage_encrypted = true
