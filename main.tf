@@ -39,6 +39,7 @@ resource "aws_rds_cluster" "default" {
   engine                  = var.engine
   engine_version          = var.engine_version
   db_subnet_group_name    =  aws_db_subnet_group.default.name
+  vpc_security_group_ids = [aws_security_group.rds.id]
   master_username         = data.aws_ssm_parameter.DB_ADMIN_USER.value
   master_password         = data.aws_ssm_parameter.DB_ADMIN_PASS.value
   storage_encrypted = true
