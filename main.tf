@@ -43,6 +43,7 @@ resource "aws_rds_cluster" "default" {
   master_username         = data.aws_ssm_parameter.DB_ADMIN_USER.value
   master_password         = data.aws_ssm_parameter.DB_ADMIN_PASS.value
   storage_encrypted = true
+  skip_final_snapshot = true
   kms_key_id = data.aws_kms_key.key.arn
   tags = merge(
     local.common_tags,
