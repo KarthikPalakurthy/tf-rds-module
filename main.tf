@@ -60,5 +60,10 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
   engine_version     = aws_rds_cluster.default.engine_version
 }
 
+resource "aws_ssm_parameter" "rds_endpoint" {
+  name  = "${var.env}-rds.ENDPOINT"
+  type  = "String"
+  value = aws_rds_cluster_instance.cluster_instances.endpoint
+}
 
 
